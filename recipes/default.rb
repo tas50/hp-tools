@@ -51,7 +51,7 @@ if node['dmi']['system']['manufacturer'] == 'HP'
     owner 'root'
     group 'root'
     mode 00644
-    notifies :restart, resources(:service => 'hpsmhd')
+    notifies :restart, 'service[hpsmhd]'
   end
 
   file '/etc/sudoers.d/hpsmh-snmptrap' do
@@ -70,7 +70,7 @@ if node['dmi']['system']['manufacturer'] == 'HP'
     end
 
     # If running on a HP DL1XX model don't run the DIMM check since the hardware doesn't support polling DIMMS
-    if node[:dmi][:system][:product_name].include?('DL1')
+    if node['dmi']['system']['product_name'].include?('DL1')
       nagios_nrpecheck 'check_hpasm' do
         command "sudo #{node['nagios']['plugin_dir']}/check_hpasm --ignore-dimms"
         action :add
