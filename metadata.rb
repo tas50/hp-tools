@@ -9,3 +9,5 @@ version          '0.3.0'
 %w{ centos redhat fedora amazon scientific oracle }.each do |os|
   supports os
 end
+
+depends 'snmp'
