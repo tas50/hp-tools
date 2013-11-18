@@ -13,7 +13,7 @@ Platform
 --------
 
 * Tested on RHEL 6 / CentOS 6.2
-* Untested, but most likely functional on Fedora, Amazon, and Scientific Linux
+* Untested, but most likely functional on Fedora, Amazon, Oracle, and Scientific Linux
 
 
 Attributes
@@ -23,5 +23,3 @@ Usage
 =====
 
 Include the default recipe on a node's runlist
-
-
