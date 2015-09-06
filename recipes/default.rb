@@ -27,7 +27,7 @@ if node['dmi']['system']['manufacturer'] == 'HP'
   end
 
   # Install HP system utilities along with the HP System Management Homepage
-  %w{ cpqacuxe hp-health hp-smh-templates hp-snmp-agents hpacucli hpdiags hponcfg hpsmh hpvca }.each do |pkg|
+  %w(cpqacuxe hp-health hp-smh-templates hp-snmp-agents hpacucli hpdiags hponcfg hpsmh hpvca).each do |pkg|
     package pkg
   end
 
@@ -42,7 +42,7 @@ if node['dmi']['system']['manufacturer'] == 'HP'
   end
 
   service 'hpsmhd' do
-    supports :status => true, :restart => true, :reload => true
+    supports status: true, restart: true, reload: true
     action [:enable, :start]
   end
 
