@@ -50,14 +50,14 @@ if node['dmi']['system']['manufacturer'] == 'HP'
     source 'smhpd.xml'
     owner 'root'
     group 'root'
-    mode 00644
+    mode '0644'
     notifies :restart, 'service[hpsmhd]'
   end
 
   file '/etc/sudoers.d/hpsmh-snmptrap' do
     owner 'root'
     group 'root'
-    mode 00440
+    mode '0440'
     content "%hpsmh       ALL = NOPASSWD: /usr/bin/snmptrap\n"
     action :create
   end
