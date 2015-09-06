@@ -2,3 +2,6 @@ AllCops:
   Exclude:
     - vendor/**/*
 
+Metrics/LineLength:
+  Enabled: false
+
