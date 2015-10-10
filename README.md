@@ -30,12 +30,12 @@ Usage
 Include the default recipe on a node's runlist
 
 License and Author
-==================
+
+**Author:**  Tim Smith (<tsmith84@gmail.com>)
+
+
+**Copyright:** 2012, Webtrends, Inc.
 ```
-Author:: Tim Smith(<tsmith84@gmail.com>)
-
-Copyright:: Copyright (c) 2012 Webtrends Inc
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
