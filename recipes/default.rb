@@ -18,7 +18,7 @@
 #
 
 # Only execute if we're on an HP system
-if node['dmi'] && node['dmi']['system']['manufacturer'] == 'HP'
+if node['dmi']['system'] && node['dmi']['system']['manufacturer'] == 'HP'
 
   # Create a symlink for a zlib shared object that doesn't get detectd correctly by the HP RPM on some systems.
   link '/usr/lib/libz.so.1' do
