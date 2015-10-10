@@ -18,7 +18,7 @@
 #
 
 # Only execute if we're on an HP system
-if node['dmi']['system']['manufacturer'] == 'HP'
+if node['dmi'] && node['dmi']['system']['manufacturer'] == 'HP'
 
   # Create a symlink for a zlib shared object that doesn't get detectd correctly by the HP RPM on some systems.
   link '/usr/lib/libz.so.1' do
@@ -60,27 +60,6 @@ if node['dmi']['system']['manufacturer'] == 'HP'
     mode '0440'
     content "%hpsmh       ALL = NOPASSWD: /usr/bin/snmptrap\n"
     action :create
-  end
-
-  # Add nagios hardware check if nagios is applied on the node
-  if node.attribute?('nagios')
-    cookbook_file "#{node['nagios']['plugin_dir']}/check_hpasm" do
-      source 'check_hpasm'
-      mode 00755
-    end
-
-    # If running on a HP DL1XX model don't run the DIMM check since the hardware doesn't support polling DIMMS
-    if node['dmi']['system']['product_name'].include?('DL1')
-      nagios_nrpecheck 'check_hpasm' do
-        command "sudo #{node['nagios']['plugin_dir']}/check_hpasm --ignore-dimms"
-        action :add
-      end
-    else
-      nagios_nrpecheck 'check_hpasm' do
-        command "sudo #{node['nagios']['plugin_dir']}/check_hpasm"
-        action :add
-      end
-    end
   end
 
 end
